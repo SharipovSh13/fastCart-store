@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.active-link {
+
+    font-weight: 600;
+
+    text-decoration: underline 2px;
+    text-decoration-color: gray;
+ 
+
+
+
+}
