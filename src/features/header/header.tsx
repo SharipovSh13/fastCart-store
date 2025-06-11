@@ -1,4 +1,6 @@
-import { Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
+import Badgers from "@/shared/components/custom/badgeComponent/badGers";
+import { Badge } from "@/shared/components/ui/badge";
+import {Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
@@ -47,13 +49,14 @@ export default function Header() {
                     </div>
 
                     <div className="grid grid-cols-3">
-                        <Link to={'wishlist'}>
-                            <Heart />
+                        <Link to={'wishlist'} className="relative">
+                            <Heart  className="relative z-1"/>
+                            <Badgers props={0}/>
                         </Link>
 
-                        <Link className="flex items-center " to={"cart"}>
-                            <ShoppingCart />
-                            <span className="bg-red-600 w-fit items-center  text-white text-[10px]">0</span>
+                        <Link className="flex items-center relative " to={"cart"}>
+                            <ShoppingCart className="z-1" />
+                            <Badgers props={0}/>
                         </Link>
 
                         <Link to={'login'}>
@@ -65,17 +68,28 @@ export default function Header() {
                 </div>
 
             </div>
-            <div className="p-[20px] w-[98%] grid grid-cols-[80%_25%] items-center  ">
+
+            <div className="p-[20px] w-[98%] grid grid-cols-[80%_25%] items-center  md:hidden ">
                 <div className="flex items-center justify-items-center gap-[4px]">
                     <Menu strokeWidth={1.2} size={28} className="mt-1" />
                     <h1 className="text-[24px] font-bold">Exclusive</h1>
                 </div>
-                <div className="grid grid-cols-2  items-center ">
-                    <div className="flex items-center relative">
-                    <ShoppingCart strokeWidth={1.2} size={24}/>
-                    <span className="bg-red-500 text-white w-fit absolute left-4 bottom-2">0</span>
+                <div>
+                    <div className="grid grid-cols-2  items-center ">
+                        <div className="flex items-center relative">
+                            <Link to={'cart'} className="">
+                                <ShoppingCart strokeWidth={1.2} size={26} className="relative z-1" />
+                                <Badgers props={0}/>
+                            </Link>
+                           
+                           
+                        </div>
+                        <Link to={'login'}>
+                            <User strokeWidth={2} size={24} />
+                        </Link>
                     </div>
-                    <User strokeWidth={2} size={24}/>
+
+
                 </div>
 
             </div>
