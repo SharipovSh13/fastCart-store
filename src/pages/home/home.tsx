@@ -1,5 +1,16 @@
+import AsideCategory from "@/widgets/categoryAsideBar/categoryAside";
+
 export default function Home(){
     return <>
-    <h1>Page Home</h1>
+    <section aria-label="Главная меню и слайдер карусел">
+        <div className=" flex">
+            <div className=" bg-red-500">
+                <AsideCategory/>
+            </div>
+            <div className="">
+
+            </div>
+        </div>
+    </section>
     </>
 }
