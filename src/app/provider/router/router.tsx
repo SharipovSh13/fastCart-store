@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AboutUs, Account, Cart, Checkout, Contact, Home, Info, Layout, Login, Products, Profile, SignUp, WeshList } from "../lazy/lazy";
+import { AboutUs, Account, Cart, Checkout, Contact, Home, Info, Layout, Login, NotFound, Products, Profile, SignUp, WeshList } from "../lazy/lazy";
 import { Suspense } from "react";
-import Loading from "@/shared/components/custom/loading/loading";
+import Loading from "@/shared/ui/custom/loading/loading";
 
 export default function Router() {
     return <>
@@ -11,6 +11,8 @@ export default function Router() {
                     <Suspense fallback={<Loading />}>
                         <Layout />
                     </Suspense>}>
+                    
+                    <Route path="*" element={<NotFound/>} />
 
                     <Route index element={<Home />} />
                     <Route path="contact" element={<Contact />} />

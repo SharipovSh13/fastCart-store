@@ -1,5 +1,5 @@
-import EmailCompany from "@/shared/components/custom/companyEmail/email";
-import CompanyPhone from "@/shared/components/custom/companyNumber/phoneNumber";
+import EmailCompany from "@/shared/ui/custom/companyEmail/email";
+import CompanyPhone from "@/shared/ui/custom/companyNumber/phoneNumber";
 import { Facebook, Instagram, Linkedin, SendHorizonal, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 

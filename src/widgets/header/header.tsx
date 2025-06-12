@@ -1,5 +1,4 @@
-import Badgers from "@/shared/components/custom/badgeComponent/badGers";
-import { Badge } from "@/shared/components/ui/badge";
+import Badgers from "@/shared/ui/custom/badgeComponent/badGers";
 import {Heart, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -51,7 +50,7 @@ export default function Header() {
                     <div className="grid grid-cols-3">
                         <Link to={'wishlist'} className="relative">
                             <Heart  className="relative z-1"/>
-                            <Badgers props={0}/>
+                            <Badgers props={0} />
                         </Link>
 
                         <Link className="flex items-center relative " to={"cart"}>
@@ -79,7 +78,7 @@ export default function Header() {
                         <div className="flex items-center relative">
                             <Link to={'cart'} className="">
                                 <ShoppingCart strokeWidth={1.2} size={26} className="relative z-1" />
-                                <Badgers props={0}/>
+                                <Badgers props={11}/>
                             </Link>
                            
                            
