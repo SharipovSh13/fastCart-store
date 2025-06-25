@@ -62,6 +62,9 @@ export default function Home() {
           <FlashSale />
           <BrowseCategory />
           <BestSelings />
+          <div className="w-[90%] m-auto p-2">
+            <img src="/public/Frame 939.png" alt="" />
+          </div>
         </div>
       </section>
     </>

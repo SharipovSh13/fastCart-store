@@ -11,8 +11,6 @@ export default function BrowseCategory() {
     dispatch(getCategory);
   }, [dispatch]);
 
-  console.log(categories);
-
   return (
     <>
       <div>
