@@ -4,41 +4,40 @@ export default function FlashSale() {
   return (
     <>
       <div>
-        <div className="w-[90%] m-auto mt-10  grid">
+        <div className="w-[90%] m-auto mt-10  grid grid-cols-1 ">
           <div className="flex items-center gap-4 font-medium mb-4">
             <Button className="rounded-[2px] w-6 h-16 bg-[#DB4444]"></Button>
             <h1 className="text-[#DB4444] ">Today’s</h1>
           </div>
-          <div className="flex items-center gap-14 ">
-            <h1 className="font-bold text-5xl   ">Flash Sales</h1>
-            <div className="flex items-center gap-10 ">
-              <div>
-                <span className="font-[400]">Days</span>
-                <h2 className="font-bold text-xl">03</h2>
-              </div>
-              <h1 className="font-bold text-2xl text-[#DB4444]">:</h1>
-              <div>
-                <span className="font-[400]">Hours</span>
-                <h2 className="font-bold text-2xl">23</h2>
-              </div>
-              <h1 className="font-bold text-2xl text-[#DB4444]">:</h1>
+          <h1 className="font-bold text-5xl   ">Flash Sales</h1>
+          <div className="flex items-center gap-2 ">
+            <div>
+              <span className="font-[400]">Days</span>
+              <h2 className="font-bold text-xl">03</h2>
+            </div>
+            <h1 className="font-bold text-2xl text-[#DB4444]">:</h1>
+            <div>
+              <span className="font-[400]">Hours</span>
+              <h2 className="font-bold text-2xl">23</h2>
+            </div>
+            <h1 className="font-bold text-2xl text-[#DB4444]">:</h1>
 
-              <div>
-                <span className="font-[400]">Minutes</span>
-                <h2 className="font-bold text-xl">19</h2>
-              </div>
-              <h1 className="font-bold text-2xl text-[#DB4444]">:</h1>
+            <div>
+              <span className="font-[400]">Minutes</span>
+              <h2 className="font-bold text-xl">19</h2>
+            </div>
+            <h1 className="font-bold text-2xl text-[#DB4444]">:</h1>
 
-              <div>
-                <span className="font-[400]">Seconds</span>
-                <h2 className="font-bold text-2xl">56</h2>
-              </div>
+            <div>
+              <span className="font-[400]">Seconds</span>
+              <h2 className="font-bold text-2xl">56</h2>
             </div>
           </div>
-          <div className="flex items-center gap-8 w-[12%] ml-auto  relative bottom-8">
-            <ArrowLeft className="bg-gray-100 w-8 h-8  rounded-full"></ArrowLeft>
-            <ArrowRight className="bg-gray-100 w-8 h-8  rounded-full"></ArrowRight>
-          </div>
+        </div>
+        <div className="flex items-center gap-14 "></div>
+        <div className="flex items-center gap-8 ml-auto  md:w-[12%] md:ml-auto ">
+          <ArrowLeft className="bg-gray-100 w-8 h-8  rounded-full"></ArrowLeft>
+          <ArrowRight className="bg-gray-100 w-8 h-8  rounded-full"></ArrowRight>
         </div>
       </div>
       <div className="flex flex-col justify-center items-center p-1 mb-10">
@@ -109,6 +108,7 @@ export default function FlashSale() {
               </p>
             </div>
           </div>
+
           <div className=" ml-2 mb-10 max-w-fit p-4">
             <div className="bg-gray-100 w-[100%] p-2">
               <div className="w-[99.9%] m-auto mt-0.5 flex justify-between">
