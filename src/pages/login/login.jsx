@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../entities/registration/api/registrApi";
+import { toast } from "react-hot-toast";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -8,16 +9,27 @@ export default function LoginPage() {
 
   async function handlLogin(e) {
     e.preventDefault();
+    const userName = e.target.userName.value.trim();
+    const password = e.target.password.value.trim();
+    if (!userName || !password) {
+      toast.error("Заполните все поля!");
+      return;
+    }
 
     const user = {
-      userName: e.target.userName.value,
-      password: e.target.password.value,
+      userName,
+      password,
     };
+
     const resultAction = await dispatch(login(user));
+
     if (login.fulfilled.match(resultAction)) {
+      toast.success("Успешно!");
       navigate("/");
-    } else {
-      console.log(`oshibka login`, resultAction.payload);
+    } else if (login.rejected.match(resultAction)) {
+      const errorMessage =
+        resultAction?.payload.message || "Ошибка при регистрации!";
+      toast.error(errorMessage);
     }
   }
 

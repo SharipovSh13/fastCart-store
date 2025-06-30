@@ -3,6 +3,9 @@ import { getToken } from "../lib/utils/token";
 
 export const axiosApiURL = axios.create({
   baseURL: import.meta.env.VITE_APP_API,
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+  },
 });
 
 // ✅ Добавляем интерцептор, чтобы в каждый запрос добавлялся токен

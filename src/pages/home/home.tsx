@@ -6,7 +6,9 @@ import { ArrowLeft, ArrowRight, Heart, Eye, Star } from "lucide-react";
 import FlashSale from "../../widgets/flashSale/flashSale";
 import BrowseCategory from "../../widgets/browseCategory/browseCategory";
 import BestSelings from "../../widgets/bestSelings/bestSelings";
-
+import VerticalHomeSwaper from "../../features/swaper/verticalHome.jsx/verticalHomeSwiper";
+import ExpProducts from "../../widgets/expProducts/expProducts";
+import ArrivalNet from "../../widgets/arrivalNet/arivvalNet";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -22,7 +24,8 @@ export default function Home() {
             <div className="w-44 m-auto">
               <AsideCategory />
             </div>
-            <div className="w-[70%] h-fit m-auto   flex items-center justify-items-center relative">
+
+            <div className="hidden lg:w-[70%] lg:h-fit lg:m-auto   lg:flex lg:items-center lg:justify-items-center lg:relative">
               <Swiper
                 modules={[Autoplay, Pagination]}
                 spaceBetween={20}
@@ -59,13 +62,27 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="block lg:hidden w-[100%]  mt-90 ml-auto mr-auto items-center justify-items-center relative">
+            <VerticalHomeSwaper />
+          </div>
           <FlashSale />
           <BrowseCategory />
           <BestSelings />
-          <div className="w-[90%] m-auto p-2">
-            <img src="/public/Frame 939.png" alt="" />
+          <div className="w-[90%] m-auto p-2 ">
+            <img
+              src="/public/Frame 939.png"
+              alt=""
+              className="hidden sm:block"
+            />
+            <img
+              src="/Frame 600.png"
+              alt=""
+              className="sm:hidden w-[100%] h-[550px] m-auto mt-2 mb-2"
+            />
           </div>
         </div>
+        <ExpProducts />
+        <ArrivalNet />
       </section>
     </>
   );

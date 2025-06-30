@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registration } from "../../entities/registration/api/registrApi";
+import { toast } from "react-hot-toast";
 
 export default function SignUpPage() {
   const dispatch = useDispatch();
@@ -9,19 +10,35 @@ export default function SignUpPage() {
 
   async function handleRegistration(e) {
     e.preventDefault();
-    let newUser = {
-      userName: e.target.userName.value,
-      phoneNumber: e.target.phoneNumber.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-      confirmPassword: e.target.confirmPassword.value,
+    const userName = e.target.userName.value.trim();
+    const phoneNumber = e.target.phoneNumber.value.trim();
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
+    const confirmPassword = e.target.confirmPassword.value.trim();
+    if (!userName || !phoneNumber || !email || !password || !confirmPassword) {
+      toast.error("Заполните все поля!");
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Пароли не совпадают!");
+      return;
+    }
+    const newUser = {
+      userName,
+      phoneNumber,
+      email,
+      password,
+      confirmPassword,
     };
     const resultAction = await dispatch(registration(newUser));
 
     if (registration.fulfilled.match(resultAction)) {
+      toast.success("Успешная регистрация!");
       navigate("/login");
-    } else {
-      console.log(`oshibka registration`, resultAction.payload);
+    } else if (registration.rejected.match(resultAction)) {
+      const errorMessage =
+        resultAction?.payload.message || "Ошибка при регистрации!";
+      toast.error(errorMessage);
     }
   }
 
