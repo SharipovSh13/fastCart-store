@@ -30,7 +30,7 @@ export default function Contact() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div>
+      <div className="mt-4 mb-10">
         <div className="grid grid-cols-1 md:grid-cols-[35%_55%] place-items-center w-[95%] m-auto ">
           <div className=" w-[95%] m-auto p-4 text-sm md:text-xl shadow-[0px_0px_26px_0px] rounded-[4px] shadow-gray-300">
             <div className="flex flex-col   rounded-[4px] ">
@@ -107,7 +107,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-      <h1>page Contact</h1>
     </>
   );
 }

@@ -38,7 +38,7 @@ export default function BestSelings() {
           </div>
         </div>
         <div className="overflow-x-auto whitespace-nowrap card-div flex gap-4 w-[95%] m-auto">
-          {products.products?.map((product) => {
+          {products.products?.slice(0, 4).map((product) => {
             return (
               <div
                 className="inline-block   max-w-fit p-4   space-y-4 group"
