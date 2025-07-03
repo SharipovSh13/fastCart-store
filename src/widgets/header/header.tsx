@@ -113,9 +113,7 @@ export default function Header() {
                 <Badgers props={productsInCart.length} />
               </Link>
 
-              <Link to={"login"}>
-                <User />
-              </Link>
+              <User onClick={() => setAccountModdal(!accountModal)} />
             </div>
           </div>
         </div>
@@ -142,37 +140,37 @@ export default function Header() {
                 size={24}
                 onClick={() => setAccountModdal(!accountModal)}
               />
-              {accountModal && (
-                <div className=" *: text-gray-300 flex flex-col p-1 bg-black/80 rounded shadow shadow-black h-fit  w-40 absolute top-22 z-30 right-8 space-y-4">
-                  <Link to={"/login"}>
-                    <div className="flex items-center gap-2 w-[70%]   m-auto">
-                      <User size={20} />
-                      <h4>Account</h4>
-                    </div>
-                  </Link>
-                  <Link>
-                    <div className="flex items-center gap-2 w-[70%]  m-auto">
-                      <ShoppingBag size={20} />
-                      <h4>My order</h4>
-                    </div>
-                  </Link>
-                  <Link className="md:hidden">
-                    <div className="flex items-center gap-2 w-[70%]  m-auto">
-                      <Heart size={20} />
-                      <h4>Wishlist</h4>
-                    </div>
-                  </Link>
-                  <Link>
-                    <div className="flex items-center gap-2 w-[70%] m-auto">
-                      <LogOut size={20} className="rotate-180" />
-                      <h4>Logout</h4>
-                    </div>
-                  </Link>
-                </div>
-              )}
             </div>
           </div>
         </div>
+        {accountModal && (
+          <div className=" *: text-gray-300 flex flex-col p-1 bg-black/80 rounded shadow shadow-black h-fit  w-40 absolute top-22 z-30 right-8 space-y-4">
+            <Link to={"/login"}>
+              <div className="flex items-center gap-2 w-[70%]   m-auto">
+                <User size={20} />
+                <h4>Account</h4>
+              </div>
+            </Link>
+            <Link to={"/cart"}>
+              <div className="flex items-center gap-2 w-[70%]  m-auto">
+                <ShoppingBag size={20} />
+                <h4>My order</h4>
+              </div>
+            </Link>
+            <Link className="md:hidden" to={"/wishlist"}>
+              <div className="flex items-center gap-2 w-[70%]  m-auto">
+                <Heart size={20} />
+                <h4>Wishlist</h4>
+              </div>
+            </Link>
+            <Link>
+              <div className="flex items-center gap-2 w-[70%] m-auto">
+                <LogOut size={20} className="rotate-180" />
+                <h4>Logout</h4>
+              </div>
+            </Link>
+          </div>
+        )}
       </header>
     </>
   );
