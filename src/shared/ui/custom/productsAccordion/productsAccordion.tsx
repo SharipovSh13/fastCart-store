@@ -6,13 +6,13 @@ import { ChevronDownIcon, ChevronRight } from "lucide-react";
 
 import { cn } from "@/shared/lib/utils";
 
-function Accordion({
+function AccordionProd({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
   return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
 }
 
-function AccordionItem({
+function AccordionItemProd({
   className,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
@@ -25,7 +25,7 @@ function AccordionItem({
   );
 }
 
-function AccordionTrigger({
+function AccordionTriggerProd({
   className,
   children,
   ...props
@@ -35,19 +35,19 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 px-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
+          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-3 px-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
           className
         )}
         {...props}
       >
         {children}
-        <ChevronRight className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-600" />
+        <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 stroke-3 shrink-0 translate-y-0.5 transition-transform duration-600" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
 }
 
-function AccordionContent({
+function AccordionContentProd({
   className,
   children,
   ...props
@@ -63,4 +63,9 @@ function AccordionContent({
   );
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export {
+  AccordionProd,
+  AccordionItemProd,
+  AccordionTriggerProd,
+  AccordionContentProd,
+};

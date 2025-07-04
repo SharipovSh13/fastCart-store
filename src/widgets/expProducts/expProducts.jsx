@@ -5,15 +5,13 @@ import { getProducts } from "../../entities/products/api/productApi";
 // import { addToCart } from "../../entities/cart/api/cartApi";
 import { Link } from "react-router-dom";
 import { Star, Heart, Eye } from "lucide-react";
-// import { toast } from "react-hot-toast";
+
 import { ProductCard } from "../../shared/components/productCard/productCard";
 
 export default function ExpProducts() {
-  // const token = localStorage.getItem("access_token");
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-  console.log(products);
+  // console.log(products);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -33,12 +31,12 @@ export default function ExpProducts() {
         </div>
 
         <div className="flex overflow-x-scroll whitespace-nowrap   ">
-          {products.products?.slice(0, 4).map((product) => (
+          {products?.products?.slice(0, 4).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
         <div className="flex overflow-x-auto  whitespace-nowrap ">
-          {products.products?.slice(0, 4).map((product) => (
+          {products?.products?.slice(0, 4).map((product) => (
             <ProductCard key={product.id} product={product} isNew />
           ))}
         </div>

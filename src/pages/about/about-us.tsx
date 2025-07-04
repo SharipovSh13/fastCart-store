@@ -7,28 +7,12 @@ import {
   BreadcrumbSeparator,
 } from "../../shared/ui/kit/breadcrumb.tsx";
 import CommandsSwiper from "../../widgets/commandsSwiper/commandsSwiper";
+import BreadUi from "../../shared/components/breadUi/breadUi";
 
 export default function AboutUs() {
   return (
     <>
-      <div className="w-[90%] m-auto  mt-6 mb-6">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbSeparator />
-
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/about">
-                <h1 className="font-medium ">Contact</h1>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
-
+      <BreadUi isEnd={`About`} />
       <div className="w-[90%] m-auto p-4 mt-10 mb-10">
         <div className="w-[90%] m-auto grid grid-cols-1 md:grid-cols-[46%_45%] place-items-center gap-6">
           <div className="flex flex-col space-y-10  ">
