@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory } from "../../entities/category/api/categoryApi";
 import { getBrands } from "../../entities/brand/api/brandApi";
-import { AlignLeft, Funnel, X } from "lucide-react";
+import { AlignLeft, Funnel, X, Star } from "lucide-react";
 import { Input } from "../../shared/ui/kit/input";
 
 export default function ProductsPage() {
@@ -72,83 +72,262 @@ export default function ProductsPage() {
         className="w-[95%] m-auto grid
       grid-cols-1 md:grid-cols-2"
       >
-        <div className="flex flex-col">
-          <div className="w-[35%]">
-            <AccordionProd
-              type="single"
-              collapsible
-              className="bg-gray-50 border-b-2 border-gray-300/60
+        <div className="hidden md:block">
+          <div className="flex flex-col">
+            <div className="w-[40%]">
+              <AccordionProd
+                type="single"
+                collapsible
+                className="bg-gray-50 border-b-2 p-1 border-gray-300/60
               "
-              defaultValue="item-1"
-            >
-              <AccordionItemProd value="item-1">
-                <AccordionTriggerProd className="">
-                  Category
-                </AccordionTriggerProd>
-                <AccordionContentProd>
-                  {categories
-                    .slice(0, showAll ? categories.length : 6)
-                    .map((el) => {
-                      return (
-                        <h1 key={el.id} className="mt-1 ml-2 font-medium">
-                          {el.categoryName}
-                        </h1>
-                      );
-                    })}
-                  {categories.length > 6 && (
-                    <h1
-                      className="mt-1 ml-2 font-medium text-[#db4444] cursor-pointer"
-                      onClick={() => setShowAll(!showAll)}
-                    >
-                      {showAll ? "Show Less" : "See All"}
-                    </h1>
-                  )}
-                </AccordionContentProd>
-              </AccordionItemProd>
-            </AccordionProd>
-          </div>
-          <div className="w-[35%]">
-            <AccordionProd
-              type="single"
-              collapsible
-              className="bg-gray-50 border-b-2 border-gray-300/60
+                defaultValue="item-1"
+              >
+                <AccordionItemProd value="item-1">
+                  <AccordionTriggerProd className="">
+                    Category
+                  </AccordionTriggerProd>
+                  <AccordionContentProd>
+                    {categories
+                      .slice(0, showAll ? categories.length : 6)
+                      .map((el) => {
+                        return (
+                          <p key={el.id} className="mt-1 ml-2 font-medium">
+                            {el.categoryName}
+                          </p>
+                        );
+                      })}
+                    {categories.length > 6 && (
+                      <span
+                        className="mt-1 ml-2 font-medium text-[#db4444] cursor-pointer"
+                        onClick={() => setShowAll(!showAll)}
+                      >
+                        {showAll ? "Show Less" : "See All"}
+                      </span>
+                    )}
+                  </AccordionContentProd>
+                </AccordionItemProd>
+              </AccordionProd>
+            </div>
+            <div className="w-[40%]">
+              <AccordionProd
+                type="single"
+                collapsible
+                className="bg-gray-50 p-1 border-b-2 border-gray-300/60
               "
-              defaultValue="item-1"
-            >
-              <AccordionItemProd value="item-1">
-                <AccordionTriggerProd className="">Brands</AccordionTriggerProd>
-                <AccordionContentProd>
-                  {brandsData
-                    .slice(0, showAll ? brandsData.length : 6)
-                    .map((el) => {
-                      return (
-                        <div
-                          key={el.id}
-                          className=" ml-2 font-medium flex items-center gap-2"
-                        >
-                          <Input type="checkbox" className="w-4 " />
-                          <h1>{el.brandName}</h1>
-                        </div>
-                      );
-                    })}
-                  {brandsData.length > 6 && (
-                    <h1
-                      className="mt-1 ml-2 font-medium text-[#db4444] cursor-pointer"
-                      onClick={() => setShowAll(!showAll)}
+                defaultValue="item-2"
+              >
+                <AccordionItemProd value="item-1">
+                  <AccordionTriggerProd className="">
+                    Brands
+                  </AccordionTriggerProd>
+                  <AccordionContentProd>
+                    {Array.isArray(brandsData) &&
+                      brandsData
+                        .slice(0, showAll ? brandsData.length : 6)
+                        .map((el) => {
+                          return (
+                            <div
+                              key={el.id}
+                              className="mt-1 ml-2 font-medium flex items-center gap-1"
+                            >
+                              <Input type="checkbox" className="w-4 " />
+                              <span>{el.brandName}</span>
+                            </div>
+                          );
+                        })}
+                    {Array.isArray(brandsData) && brandsData.length > 6 && (
+                      <span
+                        className="mt-1 ml-2 font-medium text-[#db4444] cursor-pointer"
+                        onClick={() => setShowAll(!showAll)}
+                      >
+                        {showAll ? "Show Less" : "See All"}
+                      </span>
+                    )}
+                  </AccordionContentProd>
+                </AccordionItemProd>
+              </AccordionProd>
+            </div>
+            <div className="w-[40%]">
+              <AccordionProd
+                type="single"
+                collapsible
+                className="p-1 bg-gray-50 border-b-2 border-gray-300/60
+              "
+                defaultValue="item-1"
+              >
+                <AccordionItemProd value="item-1">
+                  <AccordionTriggerProd>Features</AccordionTriggerProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="checkbox" className="w-4 " />
+                      <span>Metallic</span>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="checkbox" className="w-4 " />
+                      <span>Plastic Cover</span>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div
+                      className="
+                   ml-2 font-medium flex items-center gap-1"
                     >
-                      {showAll ? "Show Less" : "See All"}
-                    </h1>
-                  )}
-                </AccordionContentProd>
-              </AccordionItemProd>
-            </AccordionProd>
+                      <Input type="checkbox" className="w-4 " />
+                      <h1>8GB Ram</h1>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="checkbox" className="w-4 " />
+                      <span>Super power</span>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="checkbox" className="w-4 " />
+                      <span>Large Memory</span>
+                    </div>
+                  </AccordionContentProd>
+                </AccordionItemProd>
+              </AccordionProd>
+            </div>
+            <div className="w-[40%]">
+              <AccordionProd
+                type="single"
+                collapsible
+                className="bg-gray-50 border-b-2 border-gray-300/60 p-1
+              "
+                defaultValue="item-1"
+              >
+                <AccordionItemProd value="item-1">
+                  <AccordionTriggerProd>Price range</AccordionTriggerProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium  ">
+                      <Input type="range" className="w-[100%] " />
+                    </div>
+                    <div className=" flex items-center gap-2">
+                      <div className="flex flex-col  space-y-1">
+                        <label htmlFor="">Min</label>
+                        <Input placeholder="Max" className="border rounded" />
+                      </div>
+                      <div className="flex flex-col  space-y-1 ">
+                        <label htmlFor="">Max</label>
+                        <Input placeholder="Max" className="border rounded" />
+                      </div>
+                    </div>
+                    <Button className="w-[100%] text-[#db4444] font-medium border-1 border-[#db4444] mt-2 ml-auto">
+                      Apply
+                    </Button>
+                  </AccordionContentProd>
+                </AccordionItemProd>
+              </AccordionProd>
+            </div>
+            <div className="w-[40%]">
+              <AccordionProd
+                type="single"
+                collapsible
+                className="p-1 bg-gray-50 border-b-2 border-gray-300/60
+              "
+                defaultValue="item-1"
+              >
+                <AccordionItemProd value="item-1">
+                  <AccordionTriggerProd>Condition</AccordionTriggerProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="radio" className="w-4 " />
+                      <span>Any</span>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="radio" className="w-4 " />
+                      <span>Refurbished</span>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div
+                      className="
+                   ml-2 font-medium flex items-center gap-1"
+                    >
+                      <Input type="radio" className="w-4 " />
+                      <h1>Brand New</h1>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="radio" className="w-4 " />
+                      <span>Old items</span>
+                    </div>
+                  </AccordionContentProd>
+                </AccordionItemProd>
+              </AccordionProd>
+            </div>
+            <div className="w-[40%]">
+              <AccordionProd
+                type="single"
+                collapsible
+                className="p-1 bg-gray-50 border-b-2 border-gray-300/60
+              "
+                defaultValue="item-1"
+              >
+                <AccordionItemProd value="item-1">
+                  <AccordionTriggerProd>Ratings</AccordionTriggerProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="checkbox" className="w-4 " />
+                      <div className="flex items-center gap-0.5">
+                        <Star className="drop-shadow drop-shadow-yellow-500 text-black/70 w-5" />
+                        <Star className="drop-shadow drop-shadow-yellow-500 text-black/70 w-5" />
+                        <Star className="drop-shadow drop-shadow-yellow-500 text-black/70 w-5" />
+                        <Star className="drop-shadow drop-shadow-yellow-500 text-black/70 w-5" />
+                        <Star className="drop-shadow drop-shadow-yellow-500 text-black/70 w-5" />
+                      </div>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="checkbox" className="w-4 " />
+                      <div className="flex items-center gap-0.5">
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                      </div>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div
+                      className="
+                   ml-2 font-medium flex items-center gap-1"
+                    >
+                      <Input type="checkbox" className="w-4 " />
+
+                      <div className="flex items-center gap-0.5">
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                      </div>
+                    </div>
+                  </AccordionContentProd>
+                  <AccordionContentProd>
+                    <div className=" ml-2 font-medium flex items-center gap-1">
+                      <Input type="checkbox" className="w-4 " />
+
+                      <div className="flex items-center gap-0.5">
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                        <Star className="w-5 drop-shadow drop-shadow-yellow-500 text-black/70" />
+                      </div>
+                    </div>
+                  </AccordionContentProd>
+                </AccordionItemProd>
+              </AccordionProd>
+            </div>
           </div>
         </div>
-        <div className=""></div>
+        <div className="grid grid-cols-1 md:grid-cols-3"></div>
       </div>
-
-      <h1>Page Products</h1>
-      <h1>Kor kardam</h1>
     </>
   );
 }

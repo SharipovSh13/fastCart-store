@@ -3,7 +3,7 @@ import { getBrands } from "../../brand/api/brandApi";
 export const brandSlice = createSlice({
   name: "brands",
   initialState: {
-    brandsData: {},
+    brandsData: [],
   },
   reducers: {},
   extraReducers: (builder) => {
