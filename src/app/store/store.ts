@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "../../entities/registration/reducer/authSlice";
 import productsReducer from "../../entities/products/reducer/productsSlice";
 import cartReducer from "../../entities/cart/cartReducer/cartSlice";
-import colorReducer from "../../entities/color/reducer/colorSlice";
+import bransdReducer from "../../entities/brand/reducer/brandSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +11,7 @@ export const store = configureStore({
     auth: authSlice,
     products: productsReducer,
     cart: cartReducer,
-    colors: colorReducer,
+    brands: bransdReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

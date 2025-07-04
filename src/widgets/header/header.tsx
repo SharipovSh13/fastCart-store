@@ -151,7 +151,7 @@ export default function Header() {
                 <h4>Account</h4>
               </div>
             </Link>
-            <Link to={"/cart"}>
+            <Link to={"/checkout"}>
               <div className="flex items-center gap-2 w-[70%]  m-auto">
                 <ShoppingBag size={20} />
                 <h4>My order</h4>

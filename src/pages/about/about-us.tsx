@@ -7,28 +7,12 @@ import {
   BreadcrumbSeparator,
 } from "../../shared/ui/kit/breadcrumb.tsx";
 import CommandsSwiper from "../../widgets/commandsSwiper/commandsSwiper";
+import BreadUi from "../../shared/components/breadUi/breadUi";
 
 export default function AboutUs() {
   return (
     <>
-      <div className="w-[90%] m-auto  mt-6 mb-6">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbSeparator />
-
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/about">
-                <h1 className="font-medium ">Contact</h1>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
-
+      <BreadUi isEnd={`About`} />
       <div className="w-[90%] m-auto p-4 mt-10 mb-10">
         <div className="w-[90%] m-auto grid grid-cols-1 md:grid-cols-[46%_45%] place-items-center gap-6">
           <div className="flex flex-col space-y-10  ">
@@ -77,6 +61,29 @@ export default function AboutUs() {
           </div>
         </div>
         <CommandsSwiper />
+      </div>
+      <div className="w-[90%] m-auto grid grid-cols-1 md:grid-cols-3 md:gap-1 gap-10   mt-30 mb-30">
+        <div className="flex flex-col items-center justify-center ">
+          <img src="/Services.png" alt="" className="w-24 m-auto mb-2" />
+          <h1 className="font-bold ">FREE AND FAST DELIVERY</h1>
+          <span className="font-light m-auto">
+            Free delivery for all orders over $140
+          </span>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <img src="/Services (1).png" alt="" className="w-24 m-auto mb-2" />
+          <h1 className="font-bold ">24/7 CUSTOMER SERVICE</h1>
+          <span className="font-light m-auto">
+            friendly 24/7 customer support
+          </span>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <img src="/Services (2).png" alt="" className="w-24 m-auto mb-2" />
+          <h1 className="font-bold ">MONEY BACK GUARANTEE</h1>
+          <span className="font-light m-auto">
+            We reurn money within 30 days
+          </span>
+        </div>
       </div>
     </>
   );

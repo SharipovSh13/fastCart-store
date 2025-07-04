@@ -191,7 +191,12 @@ export default function CartPage() {
               </div>
               <div className="flex items-center gap-2 md:hidden">
                 <RotateCw className="rotate-90" />
-                <Trash2 className="text-[#db4444]" />
+                <Trash2
+                  className="text-[#db4444]"
+                  onClick={() => {
+                    dispatch(deleteAllProductCart());
+                  }}
+                />
               </div>
             </div>
           </div>

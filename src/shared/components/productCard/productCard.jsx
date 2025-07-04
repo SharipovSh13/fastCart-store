@@ -5,19 +5,29 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../../entities/cart/api/cartApi";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export function ProductCard({ product, isNew = false }) {
-  const token = localStorage.getItem("access_token");
+  const [token, setToken] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setToken(localStorage.getItem("access_token"));
+  }, []);
+
   const handleAddToCart = () => {
-    if (token) {
-      dispatch(addToCart(product.id));
-    } else {
-      toast.error("Iltimos regist kuned");
+    if (!token) {
+      toast.error("Avval Registratsya kuned");
       navigate("/registration");
+      return;
     }
+    if (product.quantity <= 0) {
+      toast.error("Mahsulot ba itmom rasid ");
+      return;
+    }
+    dispatch(addToCart(product.id));
+    toast.success("Mahsulot gundoshta shud");
   };
 
   return (
@@ -42,7 +52,7 @@ export function ProductCard({ product, isNew = false }) {
           className="w-full h-36 object-contain m-auto"
         />
         <div
-          onClick={handleAddToCart}
+          onClick={() => handleAddToCart()}
           className="relative inset-x-0 bottom-0 h-8 bg-black transform translate-y-full opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 text-white flex items-center justify-center cursor-pointer"
         >
           Add To Cart
