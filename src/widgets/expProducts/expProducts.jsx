@@ -41,9 +41,11 @@ export default function ExpProducts() {
           ))}
         </div>
         <div className="w-[90%] m-auto flex flex-col items-center justify-center mb-4 mt-10">
-          <Button className=" w-44 h-12 bg-[#db4444] text-white font-medium rounded-[4px] ">
-            View All Products
-          </Button>
+          <Link to={"/products"}>
+            <Button className=" w-44 h-12 bg-[#db4444] text-white font-medium rounded-[4px] ">
+              View All Products
+            </Button>
+          </Link>
         </div>
       </div>
     </>

@@ -26,9 +26,9 @@ export default function Header() {
     <>
       <header
         aria-label="Навигация на верх страницы"
-        className=" shadow-[0px_0px_5px_0px] shadow-gray-400/40"
+        className=" shadow-[0px_0px_5px_0px] shadow-gray-400/40 m-auto"
       >
-        <div className=" hidden md:grid grid-cols-[55%_40%]">
+        <div className=" hidden lg:grid grid-cols-[55%_40%]">
           <div className="grid grid-cols-[35%_55%] place-content-center items-center ">
             <Link to={"/"}>
               <img
@@ -118,7 +118,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="p-[20px] w-[98%] grid grid-cols-[80%_25%] items-center  md:hidden ">
+        <div className="p-[20px] w-[98%] grid grid-cols-[80%_25%] items-center  lg:hidden ">
           <div className="flex items-center justify-items-center gap-[4px]">
             <Menu strokeWidth={1.2} size={28} className="mt-1" />
             <h1 className="text-[24px] font-bold">Exclusive</h1>
