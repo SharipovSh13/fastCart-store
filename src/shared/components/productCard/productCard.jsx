@@ -33,7 +33,7 @@ export function ProductCard({ product, isNew = false }) {
 
   return (
     <div className="inline-block max-w-fit p-4 space-y-4 group">
-      <Link href={`/info/${product.id}`}>
+      <Link to={`/info/${product.id}`}>
         <div className="bg-gray-100 w-full p-2 h-56">
           <div className="w-60 m-auto mt-0.5 flex justify-between">
             <Button
@@ -54,12 +54,7 @@ export function ProductCard({ product, isNew = false }) {
             className="w-full h-36 object-contain m-auto"
           />
         </div>
-        <div
-          onClick={() => handleAddToCart()}
-          className="relative w-[100%] inset-x-0 bottom-12 h-8 bg-black transform translate-y-full opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 text-white flex items-center justify-center cursor-pointer"
-        >
-          Add To Cart
-        </div>
+
         <div>
           <h1 className="font-medium">{product.productName}</h1>
           <p className="flex items-center gap-2">
@@ -89,6 +84,14 @@ export function ProductCard({ product, isNew = false }) {
           </p>
         </div>
       </Link>
+      <div
+        onClick={() => handleAddToCart()}
+        className="
+        relative w-[100%] inset-x-0 bottom-32 h-8 bg-black transform translate-y-full opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 text-white flex items-center justify-center cursor-pointer
+        "
+      >
+        Add To Cart
+      </div>
     </div>
   );
 }
