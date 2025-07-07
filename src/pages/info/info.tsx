@@ -2,15 +2,20 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { infoGetById } from "../../entities/info/api/infoApi";
+import { getProducts } from "../../entities/products/api/productApi";
 import NewBreadUi from "../../shared/ui/custom/newBreadUi/newBreadUi";
 import { Star, Heart } from "lucide-react";
 import { Button } from "../../shared/ui/kit/button";
 import { decriment, increment } from "../../entities/info/reducer/infoSlice";
 import { toast } from "react-hot-toast";
+import { ProductCard } from "../../shared/components/productCard/productCard";
 
 export default function Info() {
   const { infoData } = useSelector((state) => state.info);
   const { counterProduct } = useSelector((state) => state.info);
+  const { products } = useSelector((state) => state.products);
+  console.log(products);
+
   const { id } = useParams();
 
   const images = infoData?.images || [];
@@ -18,6 +23,7 @@ export default function Info() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(infoGetById(id));
+    dispatch(getProducts());
   }, [dispatch]);
   console.log(infoData);
   const isInStock = infoData.quantity > 0;
@@ -244,6 +250,17 @@ export default function Info() {
               <img src="/Frame 914.png" alt="" className="w-[80%] m-auto" />
             </div>
           </div>
+        </div>
+      </div>
+      <div className="flex  items-center gap-4 w-[90%] m-auto mb-10 mt-10">
+        <Button className="w-2 h-16 bg-[#db4444] rounded-[6px]"></Button>
+        <h3 className="text-[#db4444] font-medium">Related Item</h3>
+      </div>
+      <div className="w-[90%] m-auto mb-10 mt-20">
+        <div className="flex overflow-x-scroll  ">
+          {products?.products?.map((product) => {
+            return <ProductCard key={product.id} isNew product={product} />;
+          })}
         </div>
       </div>
     </>
