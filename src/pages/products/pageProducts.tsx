@@ -400,56 +400,59 @@ export default function ProductsPage() {
                 className=" w-[100%] md:w-fit p-2 group h-80
               "
               >
-                <Link to={`/info/${product.id}`}>
-                  <div className="bg-gray-100 w-full p-2 h-56">
-                    <div className="w-60 m-auto mt-0.5 flex justify-between">
-                      <div className="flex flex-col gap-2 ml-auto ">
-                        <Heart className="h-6 w-6 bg-white rounded-full p-1" />
+                <div className="bg-gray-100 w-full p-2 h-56">
+                  <div className="w-60 m-auto mt-0.5 flex justify-between">
+                    <div className="flex flex-col gap-2 ml-auto ">
+                      <Heart
+                        className="h-6 w-6 bg-white rounded-full p-1"
+                        onClick={() => {}}
+                      />
+                      <Link to={`/info/${product.id}`}>
                         <Eye className="h-6 w-6 bg-white rounded-full p-1" />
-                      </div>
+                      </Link>
                     </div>
-                    <img
-                      src={`http://37.27.29.18:8002/images/${product.image}`}
-                      alt={product.productName}
-                      className="w-full h-36 object-contain m-auto"
-                    />
                   </div>
+                  <img
+                    src={`http://37.27.29.18:8002/images/${product.image}`}
+                    alt={product.productName}
+                    className="w-full h-36 object-contain m-auto"
+                  />
+                </div>
 
-                  <div>
-                    <h1 className="font-medium">{product.productName}</h1>
-                    <p className="flex items-center gap-2">
-                      <span className="text-[#DB4444] font-normal">
-                        {product.price}
-                      </span>
-                      <span className="text-gray-400 line-through">
-                        {product.price + 120}
-                      </span>
-                    </p>
-                    <p className="flex items-center mt-2  gap-0.5">
-                      {Array(5)
-                        .fill()
-                        .map((_, idx) => (
-                          <Star
-                            key={idx}
-                            className={`w-4 h-4 ${
-                              idx < product.rating
-                                ? "text-yellow-600"
-                                : "text-gray-300"
-                            }`}
-                          />
-                        ))}
-                      <span className="font-medium ml-1">
-                        {product.quantity > 0 ? (
-                          `(${product.quantity})`
-                        ) : (
-                          <span className="text-red-500 animate-pulse">
-                            Out of stock
-                          </span>
-                        )}
-                      </span>
-                    </p>
-                  </div>
-                </Link>
+                <div>
+                  <h1 className="font-medium">{product.productName}</h1>
+                  <p className="flex items-center gap-2">
+                    <span className="text-[#DB4444] font-normal">
+                      {product.price}
+                    </span>
+                    <span className="text-gray-400 line-through">
+                      {product.price + 120}
+                    </span>
+                  </p>
+                  <p className="flex items-center mt-2  gap-0.5">
+                    {Array(5)
+                      .fill()
+                      .map((_, idx) => (
+                        <Star
+                          key={idx}
+                          className={`w-4 h-4 ${
+                            idx < product.rating
+                              ? "text-yellow-600"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      ))}
+                    <span className="font-medium ml-1">
+                      {product.quantity > 0 ? (
+                        `(${product.quantity})`
+                      ) : (
+                        <span className="text-red-500 animate-pulse">
+                          Out of stock
+                        </span>
+                      )}
+                    </span>
+                  </p>
+                </div>
                 <div
                   onClick={() => handleAddToCart()}
                   className="relative inset-x-0 bottom-30 w-[100%] h-8 bg-black transform translate-y-full opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 text-white flex items-center justify-center cursor-pointer"

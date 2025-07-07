@@ -24,7 +24,7 @@ export default function Info() {
   useEffect(() => {
     dispatch(infoGetById(id));
     dispatch(getProducts());
-  }, [dispatch]);
+  }, [id]);
   console.log(infoData);
   const isInStock = infoData.quantity > 0;
   const [buttonSizeXs, setButtonSizeXs] = useState(false);
@@ -43,39 +43,14 @@ export default function Info() {
       <NewBreadUi href={`${infoData.id}`} isEnd={`${infoData.productName}`} />
 
       <div className="w-[90%] m-auto grid grid-cols-1 md:grid-cols-[55%_40%] place-items-center place-content-center gap-4 mb-10 mt-10">
-        <div className="grid grid-cols-5 w-[99%] mx-auto mt-10 mb-10 gap-2 place-items-center">
+        {/* <div className="grid grid-cols-5 w-[99%] mx-auto mt-10 mb-10 gap-2 place-items-center">
           {images.map((el) => {
             return (
               <div
                 key={el.id}
                 className="col-span-1 flex flex-col gap-1
               "
-              >
-                <div>
-                  <img
-                    src={`http://37.27.29.18:8002/images/${el.images}`}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <img
-                    src={`http://37.27.29.18:8002/images/${el.images}`}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <img
-                    src={`http://37.27.29.18:8002/images/${el.images}`}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <img
-                    src={`http://37.27.29.18:8002/images/${el.images}`}
-                    alt=""
-                  />
-                </div>
-              </div>
+              ></div>
             );
           })}
           <div className="col-span-4">
@@ -90,7 +65,43 @@ export default function Info() {
               );
             })}
           </div>
+        </div> */}
+        <div className="grid grid-cols-5 w-[99%] mx-auto mt-10 mb-10 gap-2 place-items-center">
+          <div className="col-span-1 flex flex-col gap-1">
+            {images.length === 1
+              ? Array(4)
+                  .fill(images[0])
+                  .map((img, i) => (
+                    <img
+                      key={i}
+                      src={`http://37.27.29.18:8002/images/${img.images}`}
+                      alt=""
+                      className="w-24 h-24 object-contain"
+                    />
+                  ))
+              : images
+                  .slice(0, 4)
+                  .map((img) => (
+                    <img
+                      key={img.id}
+                      src={`http://37.27.29.18:8002/images/${img.images}`}
+                      alt=""
+                      className="w-24 h-24 object-contain"
+                    />
+                  ))}
+          </div>
+
+          <div className="col-span-4">
+            <img
+              src={`http://37.27.29.18:8002/images/${
+                images[0]?.images || "fallback.png"
+              }`}
+              alt=""
+              className="w-full max-h-[400px] object-contain"
+            />
+          </div>
         </div>
+
         <div className="flex flex-col justify-center space-y-1 w-[99%] m-auto ">
           <h1 className="text-xl md:text-3xl font-medium">
             {infoData.productName}
@@ -189,7 +200,7 @@ export default function Info() {
             </div>
           </div>
           <div className="flex items-center gap-3 md:gap-4 mb-2 mt-2 ">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5">
               <Button
                 aria-label="Increment Value"
                 onClick={() => {
