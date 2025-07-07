@@ -5,6 +5,7 @@ import productsReducer from "../../entities/products/reducer/productsSlice";
 import cartReducer from "../../entities/cart/cartReducer/cartSlice";
 import bransdReducer from "../../entities/brand/reducer/brandSlice";
 import infoReducer from "../../entities/info/reducer/infoSlice";
+import wishlistReducer from "../../entities/wihslist/reducer/wishlistSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     cart: cartReducer,
     brands: bransdReducer,
     info: infoReducer,
+    wishlist: wishlistReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

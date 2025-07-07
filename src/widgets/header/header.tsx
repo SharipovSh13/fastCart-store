@@ -1,4 +1,7 @@
 import Badgers from "@/shared/ui/custom/badgeComponent/badGers";
+import { useNavigate } from "react-router-dom";
+import { removeToken } from "../../shared/lib/utils/token";
+
 import {
   Heart,
   Menu,
@@ -11,10 +14,13 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCart } from "../../entities/cart/api/cartApi";
+import { getCart, deleteAllProductCart } from "../../entities/cart/api/cartApi";
 
 export default function Header() {
+  const navigate = useNavigate();
   const { cartData } = useSelector((state) => state.cart);
+  const { wishlistProducts } = useSelector((state) => state.wishlist);
+
   const dispatch = useDispatch();
   const productsInCart = cartData?.[0]?.productsInCart ?? [];
   const [accountModal, setAccountModdal] = useState(false);
@@ -22,6 +28,26 @@ export default function Header() {
     dispatch(getCart());
   }, [dispatch]);
 
+  const userNavigateLoginFunction = () => {
+    navigate("/login");
+    setAccountModdal(!accountModal);
+  };
+  const userNavigateOrderFunction = () => {
+    navigate("/checkout");
+    setAccountModdal(!accountModal);
+  };
+  const userNavigateWishlistFunction = () => {
+    navigate("/wishlist");
+    setAccountModdal(!accountModal);
+  };
+  const userLogoutFunction = () => {
+    removeToken();
+    navigate("/");
+    dispatch(getCart());
+    setAccountModdal(!accountModal);
+    dispatch(deleteAllProductCart());
+    console.log("navigated");
+  };
   return (
     <>
       <header
@@ -105,7 +131,7 @@ export default function Header() {
             <div className="grid grid-cols-3">
               <Link to={"wishlist"} className="relative">
                 <Heart className="relative z-1" />
-                <Badgers props={0} />
+                <Badgers props={wishlistProducts.length} />
               </Link>
 
               <Link className="flex items-center relative " to={"cart"}>
@@ -138,37 +164,47 @@ export default function Header() {
               <User
                 strokeWidth={2}
                 size={24}
-                onClick={() => setAccountModdal(!accountModal)}
+                onClick={() => {
+                  setAccountModdal(!accountModal);
+                }}
               />
             </div>
           </div>
         </div>
         {accountModal && (
           <div className=" *: text-gray-300 flex flex-col p-1 bg-black/80 rounded shadow shadow-black h-fit  w-40 absolute top-22 z-30 right-8 space-y-4">
-            <Link to={"/login"}>
-              <div className="flex items-center gap-2 w-[70%]   m-auto">
-                <User size={20} />
-                <h4>Account</h4>
-              </div>
-            </Link>
-            <Link to={"/checkout"}>
-              <div className="flex items-center gap-2 w-[70%]  m-auto">
-                <ShoppingBag size={20} />
-                <h4>My order</h4>
-              </div>
-            </Link>
-            <Link className="md:hidden" to={"/wishlist"}>
-              <div className="flex items-center gap-2 w-[70%]  m-auto">
-                <Heart size={20} />
-                <h4>Wishlist</h4>
-              </div>
-            </Link>
-            <Link>
-              <div className="flex items-center gap-2 w-[70%] m-auto">
-                <LogOut size={20} className="rotate-180" />
-                <h4>Logout</h4>
-              </div>
-            </Link>
+            <div
+              className="flex items-center gap-2 w-[70%]   m-auto mt-2 mb-2 "
+              onClick={() => userNavigateLoginFunction()}
+            >
+              <User size={20} />
+              <h4>Account</h4>
+            </div>
+            <div
+              className=" flex items-center gap-2 w-[70%]  m-auto mt-2 mb-2"
+              onClick={() => {
+                userNavigateOrderFunction();
+              }}
+            >
+              <ShoppingBag size={20} className="" />
+              <h4>My order</h4>
+            </div>
+
+            <div
+              className="md:hidden flex items-center gap-2 w-[70%]  m-auto nt-2 mb-2"
+              onClick={() => userNavigateWishlistFunction()}
+            >
+              <Heart size={20} />
+              <h4>Wishlist</h4>
+            </div>
+
+            <div
+              className="flex items-center gap-2 w-[70%] m-auto"
+              onClick={() => userLogoutFunction()}
+            >
+              <LogOut size={20} className="rotate-180" />
+              <h4>Logout</h4>
+            </div>
           </div>
         )}
       </header>
