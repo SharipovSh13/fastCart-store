@@ -156,10 +156,10 @@ export default function CheckoutPage() {
                 <Input type="radio" className="w-4" />
                 <h1 className="font-medium">Cash on Delivery</h1>
               </div>
-              <div className="flex items-center rounded gap-2 mb-8  shadow-[0px_0px_16px_0px] shadow-gray-300 w-[100%] p-4 ">
+              <div className="grid grid-cols-1 md:grid-cols-2 rounded gap-3 mb-8  shadow-[0px_0px_16px_0px] shadow-gray-300 w-[100%] p-4 ">
                 <Input
                   placeholder="Coupon Code "
-                  className="w-[60%] rounded-[2px] border-1 border-gray-400"
+                  className="w-[95%] rounded-[2px] border-1 border-gray-400"
                 />
                 <Button className="w-[35%] border-1 border-[#db4444] rounded-[2px] text-[#db4444]">
                   Aplly
