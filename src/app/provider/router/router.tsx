@@ -11,7 +11,6 @@ import {
   Login,
   NotFound,
   Products,
-  Profile,
   SignUp,
   WeshList,
 } from "../lazy/lazy";
@@ -40,7 +39,7 @@ export default function Router() {
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="products" element={<Products />} />
-            <Route path="profile" element={<Profile />} />
+
             <Route path="info/:id" element={<Info />} />
             <Route path="wishlist" element={<WeshList />} />
 

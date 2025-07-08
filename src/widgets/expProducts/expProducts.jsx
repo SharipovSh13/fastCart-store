@@ -11,7 +11,6 @@ import { ProductCard } from "../../shared/components/productCard/productCard";
 export default function ExpProducts() {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-  // console.log(products);
 
   useEffect(() => {
     dispatch(getProducts());

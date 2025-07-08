@@ -29,7 +29,12 @@ export default function Header() {
   }, [dispatch]);
 
   const userNavigateLoginFunction = () => {
-    navigate("/login");
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      navigate("account");
+    } else {
+      navigate("/login");
+    }
     setAccountModdal(!accountModal);
   };
   const userNavigateOrderFunction = () => {

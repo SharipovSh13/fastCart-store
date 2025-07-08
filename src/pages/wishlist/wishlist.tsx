@@ -15,7 +15,7 @@ export default function WishlistPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { wishlistProducts } = useSelector((state) => state.wishlist);
-  console.log(wishlistProducts);
+
   const [isNew, setIsNew] = useState(false);
 
   const [token, setToken] = useState(null);

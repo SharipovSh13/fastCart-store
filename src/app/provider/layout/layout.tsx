@@ -6,10 +6,10 @@ import { Toaster } from "react-hot-toast";
 export default function Layout() {
   return (
     <>
-      <div className="max-w-[1280px]  w-[99.9%] m-auto">
+      <div className="max-w-[1280px]  w-[99.9%] m-auto ">
         <Header />
         <div>
-          <div>
+          <div className="">
             <Toaster position="top-right" reverseOrder={false} />
           </div>
           <Outlet />
