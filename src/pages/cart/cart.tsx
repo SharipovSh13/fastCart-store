@@ -77,7 +77,7 @@ export default function CartPage() {
                         <img
                           src={`http://37.27.29.18:8002/images/${product.image}`}
                           alt=""
-                          className="w-26 rounded"
+                          className="w-20 h-18 rounded"
                         />
                         <h1 className="font-medium">{product.productName}</h1>
                       </div>

@@ -14,7 +14,6 @@ export default function Info() {
   const { infoData } = useSelector((state) => state.info);
   const { counterProduct } = useSelector((state) => state.info);
   const { products } = useSelector((state) => state.products);
-  console.log(products);
 
   const { id } = useParams();
 
@@ -25,7 +24,7 @@ export default function Info() {
     dispatch(infoGetById(id));
     dispatch(getProducts());
   }, [id]);
-  console.log(infoData);
+
   const isInStock = infoData.quantity > 0;
   const [buttonSizeXs, setButtonSizeXs] = useState(false);
   const [buttonSizeS, setButtonSizeS] = useState(false);

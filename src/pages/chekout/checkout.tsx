@@ -15,8 +15,6 @@ export default function CheckoutPage() {
   const navigate = useNavigate();
   const { cartData } = useSelector((state) => state.cart);
   const productsInCart = cartData?.[0]?.productsInCart ?? [];
-  console.log(productsInCart);
-  console.log(cartData);
 
   const totalPrice = cartData?.[0]?.totalPrice ?? 0;
   const token = localStorage.getItem("access_token");

@@ -3,15 +3,13 @@ import { Star, Heart, Eye } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../entities/products/api/productApi";
 import { useEffect } from "react";
-// import { addToCart } from "../../entities/cart/api/cartApi";
+
 import { Link } from "react-router-dom";
-// import { toast } from "react-hot-toast";
+
 import { ProductCard } from "../../shared/components/productCard/productCard";
 
 export default function BestSelings() {
   const dispatch = useDispatch();
-  // const token = localStorage.getItem("access_token");
-  // const navigate = useNavigate();
   const { products } = useSelector((state) => state.products);
   useEffect(() => {
     dispatch(getProducts);

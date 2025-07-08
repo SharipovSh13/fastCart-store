@@ -13,7 +13,6 @@ import "swiper/css/navigation";
 export default function BrowseCategory() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.data);
-  console.log(categories);
 
   useEffect(() => {
     dispatch(getCategory);

@@ -12,5 +12,4 @@ export const Checkout = lazy(() => import("@/pages/chekout/checkout"));
 export const Contact = lazy(() => import("@/pages/contact/contact"));
 export const Products = lazy(() => import("@/pages/products/pageProducts"));
 export const WeshList = lazy(() => import("@/pages/wishlist/wishlist"));
-export const Profile = lazy(() => import("@/pages/profile/profile"));
 export const Info = lazy(() => import("@/pages/info/info"));
